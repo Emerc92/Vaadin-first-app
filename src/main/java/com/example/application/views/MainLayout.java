@@ -4,6 +4,7 @@ package com.example.application.views;
 import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.views.about.AboutView;
+import com.example.application.views.shopping.StartShopping;
 import com.example.application.views.welcome.WelcomeView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -40,8 +41,11 @@ public class MainLayout extends AppLayout {
     }
 
     private void addDrawerContent() {
-        H1 appName = new H1("My App");
+        H1 appName = new H1("Spesa Smart");
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
+        appName.addClickListener(e -> {
+            getUI().ifPresent(ui -> ui.navigate("welcome"));
+        });
         Header header = new Header(appName);
 
         Scroller scroller = new Scroller(createNavigation());
@@ -55,7 +59,8 @@ public class MainLayout extends AppLayout {
         AppNav nav = new AppNav();
 
         nav.addItem(new AppNavItem("Welcome", WelcomeView.class, LineAwesomeIcon.GLOBE_SOLID.create()));
-        nav.addItem(new AppNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
+        nav.addItem(new AppNavItem("About us", AboutView.class, LineAwesomeIcon.HOME_SOLID.create()));
+        nav.addItem(new AppNavItem("Start shopping", StartShopping.class, LineAwesomeIcon.CARROT_SOLID.create()));
 
         return nav;
     }
