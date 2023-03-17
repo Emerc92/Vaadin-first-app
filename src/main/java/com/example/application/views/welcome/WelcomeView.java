@@ -11,18 +11,25 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
 
 @PageTitle("Welcome")
-@Route(value = "Welcome", layout = MainLayout.class)
+@Route(value = "welcome", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
 public class WelcomeView extends HorizontalLayout {
 
     private TextField name;
     private Button sayHello;
+    private Button login;
+    private Button signIn;
 
     public WelcomeView() {
-        name = new TextField("Your name");
+        signIn = new Button("Sign In");
+        login = new Button("Login");
+
+        /*
+        name = new TextField("Register your name");
         sayHello = new Button("Say hello");
         sayHello.addClickListener(e -> {
-            Notification.show("Hello " + name.getValue());
+            name.getValue();
+            Notification.show("Hello, " + (name.getValue()==null || name.getValue().isBlank() ?"stranger": name.getValue()));
         });
         sayHello.addClickShortcut(Key.ENTER);
 
@@ -30,6 +37,8 @@ public class WelcomeView extends HorizontalLayout {
         setVerticalComponentAlignment(Alignment.END, name, sayHello);
 
         add(name, sayHello);
+        */
+
     }
 
 }
